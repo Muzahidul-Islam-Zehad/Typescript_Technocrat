@@ -36,7 +36,7 @@ type PublicUser = Omit<User, "password">; // removes password and selects rest.
 ```
 So, instead of manually writing new interfaces again and again, Pick and Omit create reusable “slices” from the main interface automatically.
 
-2. ## How do Pick and Omit utility types keeps our code DRY?
+## 2. How do Pick and Omit utility types keeps our code DRY?
 Pick and Omit keep our code DRY (Don't Repeat Yourself) by allowing us to create smaller versions of an existing interface instead of rewriting the same properties multiple times.
 This keeps the code DRY because:
 - we define properties only once
