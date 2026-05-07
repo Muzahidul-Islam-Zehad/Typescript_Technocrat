@@ -30,36 +30,15 @@ interface User {
 // Pick: selects only required properties
 type UserProfile = Pick<User, "name" | "email">; // only keeps name and email
 
-// Omit: removes specific property
-type PublicUser = Omit<User, "password">; // removes password and keeps rest
+// Omit
+type PublicUser = Omit<User, "password">; // removes password and selects rest.
+
 ```
+So, instead of manually writing new interfaces again and again, Pick and Omit create reusable “slices” from the main interface automatically.
 
-## 2. How `Pick` and `Omit` keep our code DRY
-
-DRY (Don’t Repeat Yourself) means: avoid repeating the same logic or structure in multiple places.
-
-`Pick` and `Omit` help us achieve this in a clean way:
-
-### ✔ Single source of truth
-We define the `User` interface only once.
-
-### ✔ Automatic consistency
-If we update the main interface, all derived types automatically reflect the changes.
-
-```ts
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  isActive: boolean;
-}
-```
-## Conclusion
-
-`Pick` and `Omit` are powerful TypeScript utility types that help us create reusable “slices” of a master interface. Instead of duplicating code, we build smaller types from a single source of truth.
-
-This approach:
-- reduces code duplication  
-- improves maintainability  
-- keeps the code DRY (Don’t Repeat Yourself)
+2. ## How do Pick and Omit utility types keeps our code DRY?
+Pick and Omit keep our code DRY (Don't Repeat Yourself) by allowing us to create smaller versions of an existing interface instead of rewriting the same properties multiple times.
+This keeps the code DRY because:
+- we define properties only once
+- changes in the main interface automatically update derived types
+- code becomes easier to maintain and less error-prone
