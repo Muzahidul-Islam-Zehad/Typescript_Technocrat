@@ -5,25 +5,25 @@ const filterEvenNumbers =  (numbers : number[]) : number[] =>{
 
 
 const reverseString = (text : string) : string =>{
-    return `"${text.split('').reverse().join('')}";`
+    return text.split('').reverse().join('');
 }
 
 
-const StringOrNumber = (input : string | number) : string =>{
+type StringOrNumber = string | number;
+const checkType  = (input : StringOrNumber) : string =>{
     if(typeof input === 'string')
     {
-        return `"String";`;
+        return "String";
     }
     else{
-        return `"Number";`;
+        return "Number";
     }
 }
 
 
-const getProperty = <T> (obj : T , key : keyof T) : string =>{
-    return `"${String(obj[key])}";`
+const getProperty = <T> (obj : T , key : keyof T) : T[keyof T] =>{
+    return obj[key];
 }
-
 
 
 interface Book {
@@ -31,7 +31,7 @@ interface Book {
     author: string;
     publishedYear: number;
 }
-const toggleReadStatus = (book : Book) =>{
+const toggleReadStatus = (book : Book) : Book & {isRead: boolean} =>{
     return(
         {
             ...book,
@@ -39,7 +39,6 @@ const toggleReadStatus = (book : Book) =>{
         }
     )
 }
-
 
 
 class Person {
@@ -59,10 +58,11 @@ class Student extends Person {
         this.grade = grade;
     }
 
-    getDetails(){
-        return(`"Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}";`)
+    getDetails() : string{
+        return(`Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`);
     }
 }
+
 
 
 const getIntersection = (numbers1: number[] , numbers2: number[]) : number[] =>{
